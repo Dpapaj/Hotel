@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Hotel.Utilities\Hotel.Utilities.csproj" />
+    <ProjectReference Include="..\Hotel.ViewModels\Hotel.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>
