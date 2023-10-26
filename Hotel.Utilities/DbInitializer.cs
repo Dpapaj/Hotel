@@ -42,7 +42,7 @@ namespace Hotel.Utilities
                 _roleManager.CreateAsync(new IdentityRole(WebSiteRoles.WebSite_Admin)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(WebSiteRoles.WebSite_Customer)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(WebSiteRoles.WebSite_Manager)).GetAwaiter().GetResult();
-
+                /*
                 _userManager.CreateAsync(new ApplicationUser
                 {
                     UserName= "Admin@gmail.com",
@@ -54,7 +54,7 @@ namespace Hotel.Utilities
                 if (AppAdmin != null)
                 {
                     _userManager.AddToRoleAsync(AppAdmin, WebSiteRoles.WebSite_Admin).GetAwaiter().GetResult();
-                }
+                }*/
             }
         }
     }

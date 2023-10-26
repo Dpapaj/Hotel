@@ -5,6 +5,8 @@ using Hotel.Utilities;
 using Hotel.Repositories.Interface;
 using Hotel.Repositories.Implementation;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Hotel.Models;
+using Hotel.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
@@ -18,6 +20,7 @@ builder.Services.AddIdentity<IdentityUser,IdentityRole>()
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 builder.Services.AddTransient<IUnitOfWork,UnitOfWork>();
 builder.Services.AddScoped<IEmailSender,EmailSender>();
+builder.Services.AddTransient<IHotelInfo, HotelInfoService>();
 builder.Services.AddRazorPages();
 
 
