@@ -21,6 +21,7 @@ builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 builder.Services.AddTransient<IUnitOfWork,UnitOfWork>();
 builder.Services.AddScoped<IEmailSender,EmailSender>();
 builder.Services.AddTransient<IHotelInfo, HotelInfoService>();
+builder.Services.AddTransient<IRoomService, RoomService>();
 builder.Services.AddRazorPages();
 
 

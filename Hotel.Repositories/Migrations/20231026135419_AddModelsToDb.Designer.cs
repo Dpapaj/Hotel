@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hotel.Repositories.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231023140058_ModeltoDatabase")]
-    partial class ModeltoDatabase
+    [Migration("20231026135419_AddModelsToDb")]
+    partial class AddModelsToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -372,22 +372,15 @@ namespace Hotel.Repositories.Migrations
                     b.Property<bool>("Bathroom")
                         .HasColumnType("bit");
 
-                    b.Property<int>("CustomerReportId")
+                    b.Property<int?>("CustomerReportId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("HospitalId")
-                        .HasColumnType("int");
-
                     b.Property<int>("HotelId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PictureURL")
                         .IsRequired()
@@ -860,19 +853,15 @@ namespace Hotel.Repositories.Migrations
 
             modelBuilder.Entity("Hotel.Models.Room", b =>
                 {
-                    b.HasOne("Hotel.Models.CustomerReport", "CustomerReport")
+                    b.HasOne("Hotel.Models.CustomerReport", null)
                         .WithMany("Room")
-                        .HasForeignKey("CustomerReportId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerReportId");
 
                     b.HasOne("Hotel.Models.HotelInfo", "Hotel")
                         .WithMany("Rooms")
                         .HasForeignKey("HotelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("CustomerReport");
 
                     b.Navigation("Hotel");
                 });
