@@ -77,8 +77,13 @@ namespace Hotel.Services
             ModelById.Type = Room.Type;
             ModelById.RoomNumber = Room.RoomNumber;
             ModelById.Status = Room.Status;
+            ModelById.Description = Room.Description;
+            ModelById.PictureURL = Room.PictureURL;
             ModelById.RoomPrice = Room.RoomPrice;
             ModelById.HotelId = Room.HotelInfoId;
+            ModelById.WIFI=Room.WIFI;
+            ModelById.AC=Room.AC;
+            ModelById.Bathroom=Room.Bathroom;
 
             _unitOfWork.GenericRepository<Room>().Update(ModelById);
             _unitOfWork.save();

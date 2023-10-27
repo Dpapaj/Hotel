@@ -1,4 +1,6 @@
-﻿namespace Hotel.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Hotel.Models
 {
     public class Room
     {
@@ -14,6 +16,8 @@
         public bool Bathroom { get; set; }
         public int HotelId { get; set; }
         public HotelInfo? Hotel { get; set; }
+        [NotMapped]
+        public ICollection<Order> Orders { get; set; }
 
     }
 }

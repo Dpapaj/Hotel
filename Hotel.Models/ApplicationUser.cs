@@ -13,15 +13,12 @@ namespace Hotel.Models
     {
         public string Name { get; set; }
         public Gender Gender { get; set; }
-        public string Nationality { get; set; }
+        public string Country { get; set; }
         public string Adress { get; set; }
         public DateTime DOB { get; set; }
         public string Role { get; set; }
-        public Department Department { get; set; }
-        [NotMapped]
-        public ICollection<Order> Orders { get; set; }
-        [NotMapped]
-        public ICollection<Payroll> Payrolls { get; set; }
+        public bool IsManager { get; set; }
+
 
     }
 }

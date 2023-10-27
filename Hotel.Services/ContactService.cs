@@ -72,9 +72,9 @@ namespace Hotel.Services
         {
             var model = new ContactViewModel().ConvertViewModel(contact);
             var ModelById = _unitOfWork.GenericRepository<Contact>().GetById(model.Id);
+            ModelById.Name = contact.Name;
             ModelById.Phone = contact.Phone;
             ModelById.Email = contact.Email;
-            ModelById.HotelId = contact.HotelInfoId;
             _unitOfWork.GenericRepository<Contact>().Update(ModelById);
             _unitOfWork.save();
 

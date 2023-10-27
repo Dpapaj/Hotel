@@ -1,4 +1,5 @@
 ﻿using Hotel.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace Hotel.ViewModels
         public bool Bathroom { get; set; }
         public int HotelInfoId { get; set; }
         public HotelInfo HotelInfo { get; set; }
+
+        public IFormFile RoomPictureFile { get; set; }
 
         public RoomViewModel()
         {

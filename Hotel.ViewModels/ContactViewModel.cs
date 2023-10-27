@@ -10,9 +10,11 @@ namespace Hotel.ViewModels
     public class ContactViewModel
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public int HotelInfoId {  get; set; } 
+
+
 
         public ContactViewModel() 
         { 
@@ -21,18 +23,18 @@ namespace Hotel.ViewModels
         public ContactViewModel(Contact model)
         {
             Id = model.Id;
+            Name = model.Name;
             Email = model.Email;
             Phone = model.Phone;
-            HotelInfoId = model.HotelId;
         }
         public Contact ConvertViewModel(ContactViewModel model)
         {
             return new Contact
             {
                 Id = model.Id,
+                Name = model.Name,
                 Email=model.Email,
                 Phone=model.Phone,
-                HotelId=model.HotelInfoId,
             };
         }   
 

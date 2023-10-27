@@ -50,7 +50,8 @@
             @Html.DisplayNameFor(model => model.PictureURL)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PictureURL)
+            <img src="~/Images/@Model.PictureURL" alt="Room Image" class="room-image" width="200" height="150" />
+            <p>@Model.PictureURL</p>
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.WIFI)
@@ -74,7 +75,7 @@
             @Html.DisplayNameFor(model => model.HotelInfoId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HotelInfoId)
+            @Html.DisplayNameFor(model => model.HotelInfoId)
         </dd>
     </dl>
 </div>

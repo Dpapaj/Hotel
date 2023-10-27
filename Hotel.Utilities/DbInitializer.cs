@@ -42,19 +42,24 @@ namespace Hotel.Utilities
                 _roleManager.CreateAsync(new IdentityRole(WebSiteRoles.WebSite_Admin)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(WebSiteRoles.WebSite_Customer)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(WebSiteRoles.WebSite_Manager)).GetAwaiter().GetResult();
-                /*
+                
                 _userManager.CreateAsync(new ApplicationUser
                 {
                     UserName= "Admin@gmail.com",
-                    Email="Admin@gmail.com"
-                },"Admin#147").GetAwaiter().GetResult();
+                    Email="Admin@gmail.com",
+                    Gender=Gender.Male,
+                    Country="Czechia",
+                    Adress="Test 123",
+                    DOB= new DateTime(1990, 5, 15),
+                    Role="Admin",
+            },"Admin#147").GetAwaiter().GetResult();
 
                 var AppAdmin=_context.ApplicationUsers.FirstOrDefault(x=>x.Email== "Admin@gmail.com");
 
                 if (AppAdmin != null)
                 {
                     _userManager.AddToRoleAsync(AppAdmin, WebSiteRoles.WebSite_Admin).GetAwaiter().GetResult();
-                }*/
+                }
             }
         }
     }
