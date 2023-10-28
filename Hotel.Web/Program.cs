@@ -23,6 +23,7 @@ builder.Services.AddScoped<IEmailSender,EmailSender>();
 builder.Services.AddTransient<IHotelInfo, HotelInfoService>();
 builder.Services.AddTransient<IRoomService, RoomService>();
 builder.Services.AddTransient<IContactService, ContactService>();
+builder.Services.AddTransient<IApplicationUserService, ApplicationUserService>();
 builder.Services.AddRazorPages();
 
 
@@ -42,7 +43,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-DataSedding();
+var dataSeeder = new DataSeeder(app.Services);
+dataSeeder.DataSeeding();
+//DataSedding();
 
 app.UseRouting();
 app.UseAuthentication();;
@@ -54,6 +57,7 @@ app.MapControllerRoute(
     pattern: "{Area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+/*
 void DataSedding()
 {
     using(var scope= app.Services.CreateScope())
@@ -62,3 +66,4 @@ void DataSedding()
         dbInitializer.Initialize();
     }
 }
+*/

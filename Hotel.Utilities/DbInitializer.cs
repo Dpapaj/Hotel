@@ -45,13 +45,15 @@ namespace Hotel.Utilities
                 
                 _userManager.CreateAsync(new ApplicationUser
                 {
-                    UserName= "Admin@gmail.com",
+                    Name= "Admin@gmail.com",
+                    UserName = "Admin@gmail.com",
                     Email="Admin@gmail.com",
                     Gender=Gender.Male,
                     Country="Czechia",
                     Adress="Test 123",
                     DOB= new DateTime(1990, 5, 15),
                     Role="Admin",
+                    IsManager=true,
             },"Admin#147").GetAwaiter().GetResult();
 
                 var AppAdmin=_context.ApplicationUsers.FirstOrDefault(x=>x.Email== "Admin@gmail.com");

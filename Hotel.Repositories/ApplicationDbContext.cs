@@ -20,7 +20,6 @@ namespace Hotel.Repositories
         public DbSet<Room> Rooms { get; set; }
         public DbSet<HotelInfo> HotelInfos { get; set; }
         public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Bill> Timing { get; set; }
 
 
     }

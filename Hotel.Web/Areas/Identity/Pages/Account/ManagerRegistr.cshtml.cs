@@ -23,7 +23,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Hotel.Web.Areas.Identity.Pages.Account
 {
-    public class RegisterModel : PageModel
+    public class ManagerRegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
@@ -32,7 +32,7 @@ namespace Hotel.Web.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
-        public RegisterModel(
+        public ManagerRegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
@@ -105,6 +105,8 @@ namespace Hotel.Web.Areas.Identity.Pages.Account
             public string Country { get; set; }
             public string Adress { get; set; }
             public DateTime DOB { get; set; }
+            public string Role { get; set; }
+            public bool IsManager { get; set; }
 
         }
 
@@ -122,23 +124,26 @@ namespace Hotel.Web.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                
                 user.Name = Input.Name;
                 user.Gender = Input.Gender;
                 user.Country = Input.Country;
                 user.Adress = Input.Adress;
-                user.DOB = Input.DOB;
+                user.Role = Input.Role;
+                user.DOB = Input.DOB; 
+                user.IsManager = Input.IsManager;
+                
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
 
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-                    await _userManager.AddToRoleAsync(user, WebSiteRoles.WebSite_Customer);
+                    await _userManager.AddToRoleAsync(user, WebSiteRoles.WebSite_Manager);
                     var userId = await _userManager.GetUserIdAsync(user);
-                    /*var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    /*
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",

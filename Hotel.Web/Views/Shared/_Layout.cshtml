@@ -1,4 +1,7 @@
 ﻿<!DOCTYPE html>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -31,6 +34,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="admin" asp-controller="Contact" asp-action="Index">Contacts</a>
                         </li>
+                        
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Manage Users
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" asp-area="admin" asp-controller="ApplicationUser" asp-action="Index">All Users</a>
+                                <a class="dropdown-item" asp-area="admin" asp-controller="ApplicationUser" asp-action="AllManagersIndex">Employees</a>
+                                <a class="dropdown-item" asp-area="admin" asp-controller="ApplicationUser" asp-action="AllCutomersIndex">Customers</a>
+                            </div>
+                        </div>
+
                     </ul>
                     <partial name="_LoginPartial"/>
                 </div>

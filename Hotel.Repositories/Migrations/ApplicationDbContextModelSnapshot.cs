@@ -22,59 +22,6 @@ namespace Hotel.Repositories.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Hotel.Models.Bill", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<decimal>("Advance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("AmenitiesCharge")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("BillNumber")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("CleeninglCharge")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<decimal>("DamagesCharge")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("HotelCharge")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("KitchenCharge")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("ManagerCharge")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("NoOfDays")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PlanId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("TotalBill")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("PlanId");
-
-                    b.ToTable("Timing");
-                });
-
             modelBuilder.Entity("Hotel.Models.Contact", b =>
                 {
                     b.Property<int>("Id")
@@ -177,31 +124,6 @@ namespace Hotel.Repositories.Migrations
                     b.HasIndex("ManagerId");
 
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("Hotel.Models.Plan", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("EndDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StartDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("policyNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Plan");
                 });
 
             modelBuilder.Entity("Hotel.Models.Room", b =>
@@ -489,23 +411,6 @@ namespace Hotel.Repositories.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
-            modelBuilder.Entity("Hotel.Models.Bill", b =>
-                {
-                    b.HasOne("Hotel.Models.ApplicationUser", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
-                    b.HasOne("Hotel.Models.Plan", "Plan")
-                        .WithMany("Bill")
-                        .HasForeignKey("PlanId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Plan");
-                });
-
             modelBuilder.Entity("Hotel.Models.Contact", b =>
                 {
                     b.HasOne("Hotel.Models.HotelInfo", null)
@@ -595,11 +500,6 @@ namespace Hotel.Repositories.Migrations
                     b.Navigation("Contacts");
 
                     b.Navigation("Rooms");
-                });
-
-            modelBuilder.Entity("Hotel.Models.Plan", b =>
-                {
-                    b.Navigation("Bill");
                 });
 #pragma warning restore 612, 618
         }
