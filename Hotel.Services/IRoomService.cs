@@ -11,6 +11,7 @@ namespace Hotel.Services
     public interface IRoomService
     {
         PageResult<RoomViewModel> GettAll(int pageNumber, int pageSize);
+        IEnumerable<RoomViewModel> GetAllR();
         RoomViewModel GetRoomId(int Roomid);
         void UpdateRoom(RoomViewModel Room);
         void InsertRoom(RoomViewModel Room);

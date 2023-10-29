@@ -90,6 +90,12 @@ namespace Hotel.Services
 
             
         }
+        public IEnumerable<RoomViewModel> GetAllR()
+        {
+            var RoomList = _unitOfWork.GenericRepository<Room>().GetAll().ToList();
+            var vmList = ConvertModelToViewModelList(RoomList);
+            return vmList;
+        }
         private List<RoomViewModel> ConvertModelToViewModelList(List<Room> modelList)
         {
             return modelList.Select(x => new RoomViewModel(x)).ToList();

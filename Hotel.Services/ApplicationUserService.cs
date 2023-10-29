@@ -105,9 +105,5 @@ namespace Hotel.Services
             return result;
         }
 
-        public PageResult<ApplicationUserViewModel> SearchManager(int pageNumber, int pageSize, string Spicility = null)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

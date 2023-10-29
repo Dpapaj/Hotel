@@ -13,6 +13,5 @@ namespace Hotel.Services
         PageResult<ApplicationUserViewModel> GetAll(int pageNumber, int pageSize);
         PageResult<ApplicationUserViewModel> GetAllManager(int pageNumber, int pageSize);
         PageResult<ApplicationUserViewModel> GetAllCustomer(int pageNumber, int pageSize);
-        PageResult<ApplicationUserViewModel> SearchManager(int pageNumber, int pageSize, string Spicility=null);
     }
 }

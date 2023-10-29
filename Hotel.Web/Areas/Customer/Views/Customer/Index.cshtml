@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Hotel.ViewModels.RoomViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Hotels Rooms</h1>
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+ 
+            <div class="card mb-4">
+                <img src="~/Images/@item.PictureURL" class="card-img-top" alt="Card image cap" />
+                <div class="card-body">
+                    <p>RoomType: @Html.DisplayFor(modelItem => item.Type)</p>
+                    <p>RoomNumber: @Html.DisplayFor(modelItem => item.RoomNumber)</p>
+                    <p>@Html.DisplayFor(modelItem => item.StatusR)</p>
+                    <div class="d-flex justify-content-center">
+                        <p> @Html.DisplayFor(modelItem => item.Description) </p>
+                    </div>
+    
+                   
+                    <div class="d-flex">
+                        <p class="mr-3">AC: @Html.DisplayFor(modelItem => item.AC)</p>
+                        <p class="mr-3">WIFI: @Html.DisplayFor(modelItem => item.WIFI)</p>
+                        <p>Bathroom: @Html.DisplayFor(modelItem => item.Bathroom)</p>
+                    </div>
+                    <p>HotelId: @Html.DisplayFor(modelItem => item.HotelInfoId) </p>
+
+                    <p >@Html.DisplayFor(modelItem => item.RoomPrice) CZK per night</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" class="btn btn-primary">Make Reservation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
