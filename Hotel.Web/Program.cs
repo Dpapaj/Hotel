@@ -24,6 +24,7 @@ builder.Services.AddTransient<IHotelInfo, HotelInfoService>();
 builder.Services.AddTransient<IRoomService, RoomService>();
 builder.Services.AddTransient<IContactService, ContactService>();
 builder.Services.AddTransient<IApplicationUserService, ApplicationUserService>();
+builder.Services.AddTransient<ITimingService, TimingService>();
 builder.Services.AddRazorPages();
 
 
@@ -43,9 +44,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-var dataSeeder = new DataSeeder(app.Services);
-dataSeeder.DataSeeding();
-//DataSedding();
+//var dataSeeder = new DataSeeder(app.Services);
+//dataSeeder.DataSeeding();
+DataSedding();
 
 app.UseRouting();
 app.UseAuthentication();;
@@ -57,13 +58,12 @@ app.MapControllerRoute(
     pattern: "{Area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
-/*
+
 void DataSedding()
 {
-    using(var scope= app.Services.CreateScope())
+    using (var scope = app.Services.CreateScope())
     {
         var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
         dbInitializer.Initialize();
     }
 }
-*/

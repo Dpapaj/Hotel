@@ -104,6 +104,7 @@ namespace Hotel.Web.Areas.Identity.Pages.Account
             public Gender Gender { get; set; }
             public string Country { get; set; }
             public string Adress { get; set; }
+            [DataType(DataType.Date)]
             public DateTime DOB { get; set; }
 
         }

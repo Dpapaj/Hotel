@@ -8,7 +8,7 @@ namespace Hotel.Models
         public int RoomNumber { get; set; }
         public int RoomPrice { get; set; }
         public string Type { get; set; }
-        public string Status { get; set; }
+        public StatusR StatusR { get; set; }
         public string Description { get; set; }
         public string PictureURL { get; set; }
         public bool WIFI { get; set; }
@@ -19,5 +19,13 @@ namespace Hotel.Models
         [NotMapped]
         public ICollection<Order> Orders { get; set; }
 
+    }
+}
+
+namespace Hotel.Models
+{
+    public enum StatusR
+    {
+        Available, Maintenance, Booked
     }
 }

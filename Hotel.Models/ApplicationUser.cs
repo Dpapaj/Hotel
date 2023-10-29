@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -18,7 +19,6 @@ namespace Hotel.Models
         public DateTime DOB { get; set; }
         public string Role { get; set; }
         public bool IsManager { get; set; }
-
 
     }
 }

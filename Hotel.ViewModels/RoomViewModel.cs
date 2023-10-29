@@ -15,7 +15,7 @@ namespace Hotel.ViewModels
         public int RoomNumber { get; set; }
         public int RoomPrice { get; set; }
         public string Type { get; set; }
-        public string Status { get; set; }
+        public StatusR StatusR { get; set; }
         public string Description { get; set; }
         public string PictureURL { get; set; }
         public bool WIFI { get; set; }
@@ -37,7 +37,7 @@ namespace Hotel.ViewModels
             RoomNumber=model.RoomNumber;
             RoomPrice=model.RoomPrice;
             Type=model.Type;
-            Status=model.Status;  
+            StatusR=model.StatusR;  
             Description=model.Description;
             PictureURL=model.PictureURL;
             WIFI = model.WIFI;
@@ -55,7 +55,7 @@ namespace Hotel.ViewModels
                 RoomNumber = model.RoomNumber,
                 RoomPrice = model.RoomPrice,
                 Type = model.Type,
-                Status = model.Status,
+                StatusR = model.StatusR,
                 Description = model.Description,
                 PictureURL = model.PictureURL,
                 WIFI = model.WIFI,

@@ -27,9 +27,4 @@
     <ProjectReference Include="..\Hotel.ViewModels\Hotel.ViewModels.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Manager\Controllers\" />
-    <Folder Include="Areas\Manager\Views\" />
-  </ItemGroup>
-
 </Project>

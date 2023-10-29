@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Hotel.Utilities;
+<!DOCTYPE html>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
@@ -25,6 +26,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        @{
+                            
+                            @if (User.Identity.IsAuthenticated == true && (User.IsInRole(WebSiteRoles.WebSite_Admin.ToString())))
+                            {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="admin" asp-controller="Hotel" asp-action="Index">Hotel</a>
                         </li>
@@ -34,8 +39,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="admin" asp-controller="Contact" asp-action="Index">Contacts</a>
                         </li>
-                        
-                        <div class="dropdown">
+                        <li class="dropdown">
                             <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Manage Users
                             </button>
@@ -44,8 +48,14 @@
                                 <a class="dropdown-item" asp-area="admin" asp-controller="ApplicationUser" asp-action="AllManagersIndex">Employees</a>
                                 <a class="dropdown-item" asp-area="admin" asp-controller="ApplicationUser" asp-action="AllCutomersIndex">Customers</a>
                             </div>
-                        </div>
-
+                        </li>
+                        }
+                            @if (User.Identity.IsAuthenticated == true && (User.IsInRole(WebSiteRoles.WebSite_Manager.ToString()))){
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="manager" asp-controller="timing" asp-action="Index">Shift</a>
+                        </li>
+                            }
+                        }
                     </ul>
                     <partial name="_LoginPartial"/>
                 </div>

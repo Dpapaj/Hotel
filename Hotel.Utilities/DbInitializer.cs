@@ -60,6 +60,7 @@ namespace Hotel.Utilities
 
                 if (AppAdmin != null)
                 {
+                    
                     _userManager.AddToRoleAsync(AppAdmin, WebSiteRoles.WebSite_Admin).GetAwaiter().GetResult();
                 }
             }

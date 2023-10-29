@@ -76,7 +76,7 @@ namespace Hotel.Services
             var ModelById = _unitOfWork.GenericRepository<Room>().GetById(model.Id);
             ModelById.Type = Room.Type;
             ModelById.RoomNumber = Room.RoomNumber;
-            ModelById.Status = Room.Status;
+            ModelById.StatusR = Room.StatusR;
             ModelById.Description = Room.Description;
             ModelById.PictureURL = Room.PictureURL;
             ModelById.RoomPrice = Room.RoomPrice;
