@@ -24,7 +24,7 @@ namespace Hotel.Web.Areas.Customer.Controllers
         public IActionResult Create(OrderViewModel vm)
         {
             _order.InsertOrder(vm);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Customer"");
         }
     }
 }
