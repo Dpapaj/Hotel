@@ -1,9 +1,11 @@
-﻿@using Hotel.Models
-@model IEnumerable<Hotel.ViewModels.RoomViewModel>
+﻿@using Hotel.Utilities
+@using Hotel.Models
+@model PageResult<Hotel.ViewModels.RoomViewModel>
 
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 
 
 @{
@@ -12,47 +14,117 @@
 
 <h1>Hotels Rooms</h1>
 
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="~/Images/@item.PictureURL" class="card-img-top" alt="Card image cap" />
-                <div class="card-body">
-                    <h5 class="card-title m-0">Room Type: @Html.DisplayFor(modelItem => item.Type)</h5>
-                    <div class="d-flex justify-content-between">
-                        <p>Room Number: @Html.DisplayFor(modelItem => item.RoomNumber)</p>
+@{
+    var roomsByHotel = Model.Data.GroupBy(item => item.HotelInfo.Name);
+}
 
-                        @{
-                            string statusClass = item.StatusR switch
-                            {
-                                StatusR.Available => "bg-success",
-                                StatusR.Booked => "bg-danger",
-                                StatusR.Maintenance => "bg-warning",
-                                _ => ""
-                            };
-                        }
-                        <p class="rounded-pill text-white p-2 @statusClass">
-                            @Html.DisplayFor(modelItem => item.StatusR)
-                        </p>
 
-                    </div>
-                    <p class="text-center">@Html.DisplayFor(modelItem => item.Description)</p>
-                    <div class="d-flex justify-content-center">
-                        <p class="mr-3">AC: @Html.DisplayFor(modelItem => item.AC)</p>
-                        <p class="mr-3 ">WIFI: @Html.DisplayFor(modelItem => item.WIFI)</p>
-                        <p>Bathroom: @Html.DisplayFor(modelItem => item.Bathroom)</p>
-                    </div>
+@foreach (var group in roomsByHotel)
+{
+    <h2 class="bg-primary text-white p-2  rounded text-center" style="border-radius: 15px; opacity: 0.8;">@group.Key</h2>
 
-                    <div class="d-flex justify-content-between mt-3">
-                        <p>Hotel ID: @Html.DisplayFor(modelItem => item.HotelInfoId)</p>
-                        <p class="text-right">@Html.DisplayFor(modelItem => item.RoomPrice) CZK per night</p>
-                    </div>
-                    <div class="d-flex justify-content-center mt-3">
-                        <a id="manage" class="btn btn-primary" asp-area="customer" asp-controller="Order" asp-action="Create">Make Reservation</a>
+
+    <div class="row">
+        @foreach (var item in group)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="~/Images/@item.PictureURL" class="card-img-top" alt="Card image cap" width="40" height="250" />
+                    <div class="card-body">
+                        <h5 class="card-title m-0">Room Type: @Html.DisplayFor(modelItem => item.Type)</h5>
+                        <div class="d-flex justify-content-between">
+                            <p>Room Number: @Html.DisplayFor(modelItem => item.RoomNumber)</p>
+
+                            @{
+                                string statusClass = item.StatusR switch
+                                {
+                                    StatusR.Available => "bg-success",
+                                    StatusR.Booked => "bg-danger",
+                                    StatusR.Maintenance => "bg-warning",
+                                    _ => ""
+                                };
+                            }
+                            <p class="rounded-pill text-white p-2 @statusClass">
+                                @Html.DisplayFor(modelItem => item.StatusR)
+                            </p>
+
+                        </div>
+                        <p class="text-center">@Html.DisplayFor(modelItem => item.Description)</p>
+                        <div class="d-flex justify-content-center">
+                            <p class="mr-3">AC: @Html.DisplayFor(modelItem => item.AC)</p>
+                            <p class="mr-3 ">WIFI: @Html.DisplayFor(modelItem => item.WIFI)</p>
+                            <p>Bathroom: @Html.DisplayFor(modelItem => item.Bathroom)</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-3">
+                            <p>Hotel: @Html.DisplayFor(modelItem => item.HotelInfo.Name)</p>
+                            <p class="text-right">@Html.DisplayFor(modelItem => item.RoomPrice) CZK per night</p>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <a id="manage" class="btn btn-primary reservation-button"
+                               asp-area="customer" asp-controller="Order" asp-action="Create" data-status="@item.StatusR">
+                                Make Reservation
+                            </a>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
+    </div>
+}
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(to right, #007bff, #ffffff);
     }
-</div>
+</style>
+
+@section scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var reservationButtons = document.querySelectorAll(".reservation-button");
+
+            reservationButtons.forEach(function (button) {
+                button.addEventListener("click", function (event) {
+                    var status = button.getAttribute("data-status");
+
+                    if (status === "Maintenance" ) {
+                        alert("Cannot make a reservation for a room in Maintenance ");
+                        event.preventDefault();
+                    } 
+                    else if( status === "Booked") {
+                        alert("Cannot make a reservation for a Booked room ");
+                        event.preventDefault();
+                    }
+                    
+                    else {
+                        var isAuthenticated = @User.Identity.IsAuthenticated.ToString().ToLower();
+
+                        if (!isAuthenticated) {
+                            window.location.href = "Identity/Account/Login"; 
+                            event.preventDefault();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+
+
+
+<cs-pager cs-paging-pagesize=(int)Model.PageSize
+          cs-paging-pageNumber=(int)Model.PageNumber
+          cs-paging-totalitems=(int)Model.TotalItems
+          cs-pagenumber-param="pageNumber"
+          asp-controller="Hotel"
+          asp-action="Index"
+          cs-pager-li-current-class="page-item active"
+          cs-pager-li-other-class="page-item"
+          cs-pager-li-non-active-class="page-item disabled"
+          cs-pager-link-current-class="page-link"
+          cs-pager-link-other-class="page-link">
+</cs-pager>
+

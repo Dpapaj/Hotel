@@ -1,5 +1,6 @@
 ﻿using Hotel.Services;
 using Hotel.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hotel.Web.Areas.Customer.Controllers
@@ -15,16 +16,18 @@ namespace Hotel.Web.Areas.Customer.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create(OrderViewModel vm)
         {
             _order.InsertOrder(vm);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Customer");
         }
     }
 }

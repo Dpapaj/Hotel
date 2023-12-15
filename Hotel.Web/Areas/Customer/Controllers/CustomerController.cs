@@ -13,9 +13,9 @@ namespace Hotel.Web.Areas.Customer.Controllers
             _room = room;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int pageNumber = 1, int pageSize = 10)
         {
-            return View(_room.GetAllR());
+            return View(_room.GettAll(pageNumber, pageSize));
         }
     }
 }
