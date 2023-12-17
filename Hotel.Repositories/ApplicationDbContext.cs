@@ -22,13 +22,6 @@ namespace Hotel.Repositories
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Timing> Timing { get; set; }
         public DbSet<Order> Orders { get; set; }
-        /*
         
-        
-        
-        
-        
-        */
-
     }
 }

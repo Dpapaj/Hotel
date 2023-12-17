@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Hotel.Repositories.Migrations
 {
-    public partial class OrdersModel : Migration
+    public partial class OrderToDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -4,7 +4,7 @@
 
 namespace Hotel.Repositories.Migrations
 {
-    public partial class RoomsModel : Migration
+    public partial class RoomsToDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

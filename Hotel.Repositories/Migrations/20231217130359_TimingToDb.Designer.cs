@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hotel.Repositories.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231029124203_HotelModel")]
-    partial class HotelModel
+    [Migration("20231217130359_TimingToDb")]
+    partial class TimingToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,7 @@ namespace Hotel.Repositories.Migrations
 
                     b.HasIndex("HotelInfoId");
 
-                    b.ToTable("Contact");
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("Hotel.Models.HotelInfo", b =>
@@ -132,7 +132,38 @@ namespace Hotel.Repositories.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("Room");
+                    b.ToTable("Rooms");
+                });
+
+            modelBuilder.Entity("Hotel.Models.Timing", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("AfternoonShiftEndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("AfternoonShiftStartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("MornigShiftEndtTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("MornigShiftStartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Timing");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

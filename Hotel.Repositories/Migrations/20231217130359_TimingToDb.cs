@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Hotel.Repositories.Migrations
 {
-    public partial class TimingModel : Migration
+    public partial class TimingToDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
