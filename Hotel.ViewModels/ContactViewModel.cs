@@ -26,6 +26,8 @@ namespace Hotel.ViewModels
 
 
 
+
+
         public ContactViewModel() 
         { 
 

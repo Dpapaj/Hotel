@@ -38,6 +38,10 @@ namespace Hotel.ViewModels
         [Required(ErrorMessage = "Please upload a room picture.")]
         public IFormFile RoomPictureFile { get; set; }
 
+        [Display(Name = "Select Hotel")]
+
+        public List<HotelInfoViewModel> AvailableHotels { get; set; }
+
         public RoomViewModel()
         {
 

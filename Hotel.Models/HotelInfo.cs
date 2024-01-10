@@ -16,6 +16,7 @@ namespace Hotel.Models
         public string Country { get; set; }
         public ICollection<Room> Rooms { get; set; }
         public ICollection<Contact> Contacts { get; set; }
+
     }
 
     

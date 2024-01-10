@@ -1,4 +1,5 @@
 ﻿@using Hotel.Models;
+@using Hotel.ViewModels;
 @model Hotel.ViewModels.RoomViewModel
 
 @{
@@ -62,9 +63,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="HotelInfoId" class="control-label"></label>
-                <input asp-for="HotelInfoId" class="form-control" />
+                <select asp-for="HotelInfoId" asp-items="new SelectList(Model.AvailableHotels, nameof(HotelInfoViewModel.Id), nameof(HotelInfoViewModel.Name))" class="form-control">
+                    <option value="">-- Select a hotel --</option>
+                </select>
                 <span asp-validation-for="HotelInfoId" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

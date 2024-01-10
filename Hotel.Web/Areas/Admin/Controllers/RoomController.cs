@@ -1,4 +1,5 @@
-﻿using Hotel.Services;
+﻿using Hotel.Models;
+using Hotel.Services;
 using Hotel.Utilities;
 using Hotel.ViewModels;
 using Microsoft.AspNetCore.Hosting;
@@ -51,7 +52,11 @@ namespace Hotel.Web.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+
+            var vm = new RoomViewModel();
+
+            vm.AvailableHotels = _hotelInfo.GetAll(1, int.MaxValue).Data;
+            return View(vm);
         }
 
         [HttpPost]
