@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Web", "Hotel.Web\Hotel.Web.csproj", "{1E4CC92E-5463-4DC9-944F-C5CE8A4649E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Web", "Hotel.Web\Hotel.Web.csproj", "{1E4CC92E-5463-4DC9-944F-C5CE8A4649E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Models", "Hotel.Models\Hotel.Models.csproj", "{CEF659E7-FD3D-488D-B5EB-C78ED3A09710}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Models", "Hotel.Models\Hotel.Models.csproj", "{CEF659E7-FD3D-488D-B5EB-C78ED3A09710}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Repositories", "Hotel.Repositories\Hotel.Repositories.csproj", "{CC5DF3D5-3518-40B8-846B-C3E2CF93FB88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Repositories", "Hotel.Repositories\Hotel.Repositories.csproj", "{CC5DF3D5-3518-40B8-846B-C3E2CF93FB88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Services", "Hotel.Services\Hotel.Services.csproj", "{2C0CEFAA-F3B6-41AC-8F44-8B6F083E909D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Services", "Hotel.Services\Hotel.Services.csproj", "{2C0CEFAA-F3B6-41AC-8F44-8B6F083E909D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Utilities", "Hotel.Utilities\Hotel.Utilities.csproj", "{80CF8B63-C3B9-4C5E-ABA2-90BC4A7FB140}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Utilities", "Hotel.Utilities\Hotel.Utilities.csproj", "{80CF8B63-C3B9-4C5E-ABA2-90BC4A7FB140}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.ViewModels", "Hotel.ViewModels\Hotel.ViewModels.csproj", "{A4199F6C-735C-4627-A7BA-84851D307FF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.ViewModels", "Hotel.ViewModels\Hotel.ViewModels.csproj", "{A4199F6C-735C-4627-A7BA-84851D307FF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Tests", "Hotel.Tests\Hotel.Tests.csproj", "{9544F263-8D38-4031-9109-37D673B0C3BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{A4199F6C-735C-4627-A7BA-84851D307FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4199F6C-735C-4627-A7BA-84851D307FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4199F6C-735C-4627-A7BA-84851D307FF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9544F263-8D38-4031-9109-37D673B0C3BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9544F263-8D38-4031-9109-37D673B0C3BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9544F263-8D38-4031-9109-37D673B0C3BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9544F263-8D38-4031-9109-37D673B0C3BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
