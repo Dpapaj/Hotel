@@ -28,8 +28,20 @@ namespace Hotel.Web.Areas.Manager.Controllers
         [HttpPost]
         public IActionResult AddTiming(TimingViewModel vm)
         {
-            _timingService.AddTiming(vm);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _timingService.AddTiming(vm);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, "An error occurred while adding the timing.");
+                }
+            }
+
+            return View(vm);
         }
         [HttpGet]
         public IActionResult Details(int id)

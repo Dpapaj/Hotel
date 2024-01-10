@@ -58,18 +58,16 @@ namespace Hotel.Web.Areas.Admin.Controllers
         public IActionResult Create(RoomViewModel vm)
         {
             if (vm.RoomPictureFile != null) 
-            {
-                ImageOperation image = new ImageOperation(_env);
-                string ImageFileName= image.UploadImage(vm);
-                vm.PictureURL = ImageFileName;
-            }/*
-            else
-            {
-                vm.PictureURL = "~/Images/Hoteldemo.jpg";
-            }*/
-            _room.InsertRoom(vm);
-            return RedirectToAction("Index");
+        {
+            ImageOperation image = new ImageOperation(_env);
+            string ImageFileName= image.UploadImage(vm);
+            vm.PictureURL = ImageFileName;
         }
+        _room.InsertRoom(vm);
+        return RedirectToAction("Index");
+        }
+        
+
         public IActionResult Delete(int id)
         {
             _room.DeleteRoom(id);

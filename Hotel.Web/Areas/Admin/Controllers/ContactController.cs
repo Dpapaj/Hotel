@@ -49,8 +49,19 @@ namespace Hotel.Web.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(ContactViewModel vm)
         {
-            _contact.InsertContact(vm);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _contact.InsertContact(vm);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, "An error occurred while saving the data.");
+                }
+            }
+            return View(vm);
         }
         public IActionResult Delete(int id)
         {

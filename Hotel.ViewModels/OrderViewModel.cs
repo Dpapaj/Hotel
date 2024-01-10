@@ -11,12 +11,22 @@ namespace Hotel.ViewModels
     public class OrderViewModel
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "The Order Number field is required.")]
         public string Number { get; set; }
+
+        [Required(ErrorMessage = "The Order Type field is required.")]
         public string Type { get; set; }
+
         [DataType(DataType.Date)]
+        [Required(ErrorMessage = "The Start Date field is required.")]
         public DateTime StartDate { get; set; }
+
         [DataType(DataType.Date)]
+        [Required(ErrorMessage = "The End Date field is required.")]
         public DateTime EndDate { get; set; }
+
+        [StringLength(255, ErrorMessage = "The Description field cannot exceed 255 characters.")]
         public string Description { get; set; }
 
         public OrderViewModel()

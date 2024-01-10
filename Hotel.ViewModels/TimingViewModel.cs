@@ -12,16 +12,27 @@ namespace Hotel.ViewModels
     public class TimingViewModel
     {
         public int Id { get; set; }
+
         [DataType(DataType.Date)]
+        [Required(ErrorMessage = "The Date field is required.")]
         public DateTime Date { get; set; }
+
         [DataType(DataType.Time)]
+        [Required(ErrorMessage = "The Morning Shift Start Time field is required.")]
         public DateTime MornigShiftStartTime { get; set; }
+
         [DataType(DataType.Time)]
+        [Required(ErrorMessage = "The Morning Shift End Time field is required.")]
         public DateTime MornigShiftEndtTime { get; set; }
+
         [DataType(DataType.Time)]
+        [Required(ErrorMessage = "The Afternoon Shift Start Time field is required.")]
         public DateTime AfternoonShiftStartTime { get; set; }
+
         [DataType(DataType.Time)]
+        [Required(ErrorMessage = "The Afternoon Shift End Time field is required.")]
         public DateTime AfternoonShiftEndTime { get; set; }
+
         public Status Status { get; set; }
 
         public TimingViewModel()

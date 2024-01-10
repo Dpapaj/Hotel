@@ -47,9 +47,21 @@ namespace Hotel.Web.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(HotelInfoViewModel vm)
         {
-            _hotelInfo.InsertHotelInfo(vm);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _hotelInfo.InsertHotelInfo(vm);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, "An error occurred while saving the data.");
+                }
+            }
+            return View(vm);
         }
+
 
         public IActionResult Delete(int id)
         {

@@ -26,8 +26,20 @@ namespace Hotel.Web.Areas.Customer.Controllers
         [Authorize]
         public IActionResult Create(OrderViewModel vm)
         {
-            _order.InsertOrder(vm);
-            return RedirectToAction("Index", "Customer");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _order.InsertOrder(vm);
+                    return RedirectToAction("Index", "Customer");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, "An error occurred while saving the order.");
+                }
+            }
+
+            return View(vm);
         }
     }
 }
